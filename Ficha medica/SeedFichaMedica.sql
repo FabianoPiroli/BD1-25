@@ -167,3 +167,14 @@ INSERT INTO ficha (nome, data_nascimento, id_tipo_sanguineo, id_sexo, id_conveni
 ('Camila Ramos', '1993-11-22', 6, 2, 2, 2, 1, 2, 6, 9876543, 55667788990, 21998765432),
 ('Lucas Martins', '1980-12-05', 7, 1, 1, 1, 2, 1, 7, 8765432, 66778899011, 11976543210),
 ('Beatriz Lima', '1997-04-14', 8, 2, 2, 2, 1, 2, 8, 5432167, 77889900122, 21976543211);
+
+-- Verificar Dados Inseridos
+select * from especializacao;
+select * from medico;
+select * from experiencia;
+select * from diagnostico;
+select * from consulta;
+select * from tipo_exame;
+select * from exame;
+select * from estado_civil;
+select * from endereco;

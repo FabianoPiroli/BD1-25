@@ -60,7 +60,6 @@ CREATE TABLE `Ingresso` (
   `id_cliente` INT,
   `id_sessao` INT,
   `valor_total` DECIMAL(15,2),
-  `valor_desconto` DECIMAL(15,2),
   `data_compra` DATETIME,
   `assento` VARCHAR(10)
 );

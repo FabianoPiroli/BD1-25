@@ -24,6 +24,8 @@ FROM Filme f
 JOIN Genero_Filme g ON f.id_genero = g.id
 JOIN Diretor d ON f.id_diretor = d.id;
 
+SELECT * FROM FilmesDetalhados;
+
 -- Sessões com lugares ocupados
 CREATE VIEW OcupacaoPorSessao AS
 SELECT f.titulo_original, s.horario_inicio, c.nome_fantasia, COUNT(i.id) AS lugares_ocupados
@@ -32,6 +34,8 @@ JOIN Filme f ON s.id_filme = f.id
 JOIN Cinema c ON s.id_cinema = c.id
 LEFT JOIN Ingresso i ON i.id_sessao = s.id
 GROUP BY s.id;
+
+SELECT * FROM OcupacaoPorSessao;
 
 /*Triggers*/
 
@@ -48,12 +52,9 @@ BEGIN
   FROM Cliente
   WHERE id = NEW.id_cliente;
 
-  -- Armazena o valor total original
-  SET NEW.valor_total = NEW.valor_desconto;
-
   -- Se for estudante, aplica o desconto
   IF v_estudante = TRUE THEN
-    SET NEW.valor_desconto = NEW.valor_total * 0.5;
+    SET NEW.valor_total = NEW.valor_total * 0.5;
   END IF;
 END;
 //
@@ -72,7 +73,7 @@ DELIMITER ;
 
 /*Joins*/
 
--- Gêneros e Diretores
+-- Filmes, Gêneros e Diretores
 SELECT f.titulo_original, g.genero, d.nome AS diretor
 FROM Filme f
 JOIN Genero_Filme g ON f.id_genero = g.id
@@ -91,7 +92,13 @@ JOIN Cinema c ON s.id_cinema = c.id
 JOIN Filme f ON s.id_filme = f.id;
 
 -- Ingressos com dados do cliente e filme assistido
-SELECT cli.nome AS cliente, f.titulo_original, i.valor_total, i.assento, i.data_compra
+SELECT 
+  cli.nome AS cliente,
+  IF(cli.estudante = 1, 'TRUE', 'FALSE') AS eh_estudante,
+  f.titulo_original,
+  i.valor_total,
+  i.assento,
+  i.data_compra
 FROM Ingresso i
 JOIN Cliente cli ON i.id_cliente = cli.id
 JOIN Sessao s ON i.id_sessao = s.id

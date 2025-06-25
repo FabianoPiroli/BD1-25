@@ -69,9 +69,9 @@ INSERT INTO Cliente (nome, email, cpf, telefone, data_nascimento, estudante) VAL
 ('Mariana Silva', 'mariana@email.com', 56789012345, 48998887777, '1985-06-22', FALSE);
 
 -- Ingressos
-INSERT INTO Ingresso (id, id_cliente, id_sessao, valor_total, valor_desconto, data_compra, assento) VALUES
-(1, 1, 1, 30.00, 15.00, NOW(), 'B12'),
-(2, 2, 2, 35.00, 0.00, NOW(), 'C10'),
-(3, 3, 3, 32.00, 16.00, NOW(), 'A03'),
-(4, 4, 4, 40.00, 20.00, NOW(), 'D09'),
-(5, 5, 5, 33.00, 0.00, NOW(), 'E01');
+INSERT INTO Ingresso (id, id_cliente, id_sessao, valor_total, data_compra, assento) VALUES
+(1, 1, 1, 30.00, NOW(), 'B12'),
+(2, 2, 2, 35.00, NOW(), 'C10'),
+(3, 3, 3, 32.00, NOW(), 'A03'),
+(4, 4, 4, 40.00, NOW(), 'D09'),
+(5, 5, 5, 33.00, NOW(), 'E01');
